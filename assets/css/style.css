@@ -1,0 +1,295 @@
+/* Color Scheme
+#f5c600	(245,198,0)
+#d8460b	(216,70,11)
+#c21703	(194,23,3)
+#9b4923	(155,73,35)
+#007291	(0,114,145) */
+
+:root {
+  --yellow-highlight: #f5c600;
+  --orange-highlight: #d8460b;
+  --red-highlight: #c21703;
+  --brown-highlight: #9b4923;
+  --blue-highlight: #007291;
+  --almost-white: snow;
+}
+
+@font-face {
+  font-family: Gameshow;
+  src: url(../fonts/gameshow/Gameshow.ttf);
+}
+@font-face {
+  font-family: KeeponTruckin;
+  src: url(../fonts/groovy/KeeponTruckin.ttf);
+}
+body {
+  background-color: #484848;
+  background-image: url("../images/round.png");
+  color: var(--almost-white);
+  font-family: KeeponTruckin;
+}
+#navbar-brand {
+  font-family: Gameshow;
+  font-size: 4em;
+  line-height: 0.7;
+  margin-right: 0;
+}
+.navbar {
+  background: rgb(37, 37, 37);
+}
+span {
+}
+
+/* div,
+footer,
+header,
+section {
+  border: red 1px solid;
+} */
+#content-wrapper__row {
+  background: #484848;
+}
+.content {
+  background: snow;
+  height: 100%;
+}
+
+.main_content_wrapper {
+  padding: 10px;
+  background-color: #484848;
+}
+
+#navbar-wrapper {
+  flex-direction: column;
+}
+#navbar-brand {
+}
+.navbar-brand {
+  padding-left: 0.3125rem;
+}
+.footer {
+  font-size: 0.75rem;
+  color: #787878;
+  background: #484848;
+  border-top: 1px snow solid;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+#console-wrapper {
+  min-height: 40vh;
+}
+.console {
+  font-size: 2em;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.answer {
+  border: 5px #484848 solid;
+  padding: 1em;
+  background-color: var(--almost-white);
+  color: #484848;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+.guess-button__wrapper {
+  /* height: 100%; */
+  background-color: #484848;
+}
+.guess-button-row {
+  /* height: 50%; */
+}
+.guesses {
+  background-color: #484848;
+}
+.answer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.winner {
+  /* background-color: #03c217; */
+  color: #484848;
+  animation-name: winner;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+@keyframes winner {
+  from {
+    background-color: var(--almost-white);
+  }
+  to {
+    background-color: #03c217;
+  }
+}
+.loser {
+  background-color: var(--red-highlight);
+  color: var(--almost-white);
+  animation-name: loser;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+@keyframes loser {
+  from {
+    color: #484848;
+    background-color: var(--almost-white);
+  }
+  to {
+    color: var(--almost-white);
+    background-color: var(--red-highlight);
+  }
+}
+#timer {
+  animation-name: grow;
+  animation-duration: 1s;
+}
+@keyframes grow {
+  from {
+    font-size: 1em;
+  }
+  to {
+    font-size: 8rem;
+  }
+  from {
+    color: var(--blue-highlight);
+  }
+  to {
+    color: var(--yellow-highlight);
+  }
+}
+.letters {
+  font-size: 5rem;
+  font-color: var(--almost-white);
+}
+
+#navbar-brand {
+  font-size: 0; /* Removes the space between spans in logo */
+}
+
+#letter1,
+#letter10 {
+  animation-name: yellowChange;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+}
+@keyframes yellowChange {
+  from {
+    color: var(--almost-white);
+  }
+  to {
+    color: var(--yellow-highlight);
+  }
+}
+#letter2,
+#letter9 {
+  animation-name: orangeChange;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+@keyframes orangeChange {
+  from {
+    color: var(--almost-white);
+  }
+  to {
+    color: var(--orange-highlight);
+  }
+}
+#letter3,
+#letter8 {
+  animation-name: redChange;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+@keyframes redChange {
+  from {
+    color: var(--almost-white);
+  }
+  to {
+    color: var(--red-highlight);
+  }
+}
+#letter4,
+#letter7 {
+  animation-name: brownChange;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+@keyframes brownChange {
+  from {
+    color: var(--almost-white);
+  }
+  to {
+    color: var(--brown-highlight);
+  }
+}
+#letter6 {
+  animation-name: blueChange;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+@keyframes blueChange {
+  from {
+    color: var(--almost-white);
+  }
+  to {
+    color: var(--blue-highlight);
+  }
+}
+
+.btn-primary {
+  background-color: var(--orange-highlight);
+  padding: 0.5em 1.5em 0.5em 1.5em;
+  color: var(--almost-white);
+  font-family: sans-serif;
+  text-shadow: #484848 1px 1px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: 0px;
+  margin-top: 10rem;
+}
+
+@media (hover: hover), (hover: on-demand) {
+  .btn-primary:hover {
+    background-color: var(--brown-highlight);
+    color: var(--almost-white);
+  }
+  .answer:hover {
+    opacity: 0.5;
+  }
+}
+
+.btn-primary:active {
+  background-color: var(--brown-highlight);
+  color: var(--almost-white);
+}
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+.container {
+  animation-name: pageload;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+@keyframes pageload {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
