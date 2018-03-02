@@ -4,7 +4,10 @@
 #c21703	(194,23,3)
 #9b4923	(155,73,35)
 #007291	(0,114,145) */
-
+body,
+html {
+  height: 100%;
+}
 :root {
   --yellow-highlight: #f5c600;
   --orange-highlight: #d8460b;
@@ -12,6 +15,9 @@
   --brown-highlight: #9b4923;
   --blue-highlight: #007291;
   --almost-white: snow;
+}
+.flex-grow {
+  flex: 1 0 auto;
 }
 
 @font-face {
@@ -38,8 +44,7 @@ body {
   background: rgb(37, 37, 37);
 }
 
-/* div,
-footer,
+/* div, footer,
 header,
 section {
   border: red 1px solid;
@@ -66,11 +71,11 @@ section {
   padding-left: 0.3125rem;
 }
 .footer {
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   color: #787878;
   background: rgba(37, 37, 37, 1);
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 #console-wrapper {
   min-height: 40vh;
@@ -92,6 +97,7 @@ section {
   color: #484848;
   cursor: pointer;
   font-family: sans-serif;
+  border-radius: 10px;
 }
 
 .guess-button__wrapper {
@@ -301,5 +307,8 @@ footer {
 }
 */
 .main {
-  background-color: rgb(72, 72, 72);
+  background-color: rgba(72, 72, 72, 1);
+}
+.questions {
+  min-height: 30vh;
 }

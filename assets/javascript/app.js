@@ -7,101 +7,10 @@ var noAnswer = 0;
 var answerSubmitted = false;
 var currentId;
 var questionTimer;
+var questionPool;
+var queryURL =
+  "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple";
 
-var questionPool = {
-  response_code: 0,
-  results: [
-    {
-      category: "Entertainment: Video Games",
-      type: "multiple",
-      difficulty: "easy",
-      question: "Which game did NOT get financed via Crowdfunding?",
-      correct_answer: "Enter the Gungeon",
-      incorrect_answers: ["Town of Salem", "Undertale", "Tower Unite"]
-    },
-    {
-      category: "Entertainment: Film",
-      type: "multiple",
-      difficulty: "medium",
-      question:
-        "Who played Batman in the 1997 film &quot;Batman and Robin&quot;?",
-      correct_answer: "George Clooney",
-      incorrect_answers: ["Michael Keaton", "Val Kilmer", "Christian Bale"]
-    },
-    {
-      category: "Entertainment: Japanese Anime & Manga",
-      type: "multiple",
-      difficulty: "easy",
-      question: "What is the name of the corgi in Cowboy Bebop?",
-      correct_answer: "Einstein",
-      incorrect_answers: ["Edward", "Rocket", "Joel"]
-    },
-    {
-      category: "Entertainment: Film",
-      type: "multiple",
-      difficulty: "medium",
-      question:
-        "Which iconic character is featured in movies such as &quot;The Enforcer&quot;, &quot;Sudden Impact&quot;, and &quot;The Dead Pool&quot;?",
-      correct_answer: "Dirty Harry",
-      incorrect_answers: ["Indiana Jones", "James Bond", "Harry Potter"]
-    },
-    {
-      category: "Entertainment: Cartoon & Animations",
-      type: "multiple",
-      difficulty: "easy",
-      question: "Which of the following is not a Flintstones character?",
-      correct_answer: "Lord Rockingham IX",
-      incorrect_answers: ["Rockhead Slate", "The Great Gazoo", "Barney Rubble"]
-    },
-    {
-      category: "Sports",
-      type: "multiple",
-      difficulty: "easy",
-      question: "Which team has won the most Stanley Cups in the NHL?",
-      correct_answer: "Montreal Canadians",
-      incorrect_answers: [
-        "Chicago Blackhawks",
-        "Toronto Maple Leafs",
-        "Detroit Red Wings"
-      ]
-    },
-    {
-      category: "Geography",
-      type: "multiple",
-      difficulty: "medium",
-      question: "What was the most populous city in the Americas in 2015?",
-      correct_answer: "Sao Paulo",
-      incorrect_answers: ["New York", "Mexico City", "Los Angeles"]
-    },
-    {
-      category: "Entertainment: Music",
-      type: "multiple",
-      difficulty: "medium",
-      question:
-        "Which artist or group did John Lennon consider &quot;son(s) of the Beatles&quot;?",
-      correct_answer: "Jeff Lynnes Electric Light Orchestra",
-      incorrect_answers: ["The Rolling Stones", "Pink Floyd", "The Who"]
-    },
-    {
-      category: "Entertainment: Video Games",
-      type: "multiple",
-      difficulty: "easy",
-      question:
-        "Which character in the &quot;Animal Crossing&quot; series uses the phrase &quot;zip zoom&quot; when talking to the player?",
-      correct_answer: "Scoot",
-      incorrect_answers: ["Drake", "Bill", "Mallary"]
-    },
-    {
-      category: "Entertainment: Television",
-      type: "multiple",
-      difficulty: "hard",
-      question:
-        "In season one of the US Kitchen Nightmares, Gordan Ramsay tried to save 10 different restaurants. How many ended up closing afterwards?",
-      correct_answer: "9",
-      incorrect_answers: ["6", "3", "0"]
-    }
-  ]
-};
 $(document).ready(function() {
   $("#start-button").click(start);
   $(".answer").click(userAnswer);
@@ -114,7 +23,18 @@ $(document).ready(function() {
     if (answerSubmitted === false && answer !== null) {
       clearInterval(questionTimer);
       currentId = $(this).attr("id");
-      if (answer === questionPool.results[questionCounter - 1].correct_answer) {
+      JsonAnswer = decodeHtml(
+        questionPool.results[questionCounter - 1].correct_answer
+      );
+      function decodeHtml(truth) {
+        return $("<div>")
+          .html(truth)
+          .text();
+      }
+
+      console.log("correct answer-object: " + JsonAnswer);
+      console.log("answer: " + answer);
+      if (answer === JsonAnswer) {
         $(this).addClass("winner");
         $("#console").html("<h1>You Got it Right!</h1>");
 
@@ -123,7 +43,7 @@ $(document).ready(function() {
           newQuestion();
           answerSubmitted = false;
           $("#" + currentId).removeClass("winner");
-        }, 3000);
+        }, 3000); // correct length is 3000
       } else {
         incorrect++;
         $(this).addClass("loser");
@@ -137,7 +57,7 @@ $(document).ready(function() {
           newQuestion();
           answerSubmitted = false;
           $("#" + currentId).removeClass("loser");
-        }, 3000);
+        }, 3000); // change to 3000 for final project
       }
 
       answerSubmitted = true;
@@ -145,6 +65,12 @@ $(document).ready(function() {
   }
 
   function start() {
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+      questionPool = response;
+    });
     $("#start-button").addClass("d-none");
     $("#sub-console").removeClass("d-none");
     $("#sub-console").text("");
