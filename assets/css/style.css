@@ -290,13 +290,16 @@ section {
     opacity: 100;
   }
 }
-.navbar {
+/* .navbar {
   height: 8vh;
-}
-#content-wrapper {
+} */
+/* #content-wrapper {
   height: 80vh;
-  background-color: rgba(72, 72, 72, 0.8);
 }
 footer {
   height: 12vh;
+}
+*/
+.main {
+  background-color: rgb(72, 72, 72);
 }
