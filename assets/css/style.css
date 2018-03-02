@@ -37,8 +37,6 @@ body {
 .navbar {
   background: rgb(37, 37, 37);
 }
-span {
-}
 
 /* div,
 footer,
@@ -47,16 +45,16 @@ section {
   border: red 1px solid;
 } */
 #content-wrapper__row {
-  background: #484848;
+  /* background:#484848; */
 }
 .content {
-  background: snow;
+  /* background: snow; */
   height: 100%;
 }
 
 .main_content_wrapper {
   padding: 10px;
-  background-color: #484848;
+  /* background-color: #484848; */
 }
 
 #navbar-wrapper {
@@ -70,8 +68,7 @@ section {
 .footer {
   font-size: 0.75rem;
   color: #787878;
-  background: #484848;
-  border-top: 1px snow solid;
+  background: rgba(37, 37, 37, 1);
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
@@ -292,4 +289,14 @@ section {
   to {
     opacity: 100;
   }
+}
+.navbar {
+  height: 8vh;
+}
+#content-wrapper {
+  height: 80vh;
+  background-color: rgba(72, 72, 72, 0.8);
+}
+footer {
+  height: 12vh;
 }
